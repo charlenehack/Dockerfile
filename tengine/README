@@ -1,1 +1,2 @@
-readme
+docker build -t tengine:v1.0 .
+docker run -d --name tengine -h web01 -p80:80 -p443:443 -v/data/docker/conf:/etc/nginx/sites-enabled -v/data/docker/wwwroot:/data/wwwroot tengine:v1.0
