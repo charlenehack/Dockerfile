@@ -6,7 +6,7 @@ ARG TENGINE_VERSION="-2.2.2"
 ADD tengine${TENGINE_VERSION}.tar.gz /usr/local/
 WORKDIR /usr/local
 
-RUN apk add build-base && apk add openssl openssl-dev pcre-dev libxml2-dev libxslt-dev gd-dev libgd geoip geoip-dev perl-dev && \
+RUN apk add build-base && apk add --no-cache openssl openssl-dev pcre-dev libxml2-dev libxslt-dev gd-dev libgd geoip geoip-dev perl-dev && \
 addgroup -S www && adduser -D -S -H -s /sbin/nologin -G www www && \
 cd tengine${TENGINE_VERSION} && ./configure \
 	--enable-mods-static=all \
