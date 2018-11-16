@@ -1,0 +1,2 @@
+docker build -t php-fpm:v1.0 .
+docker run -d --name php-fpm -p9000:9000 -v/data/docker/wwwroot:/var/www/html php-fpm:v1.0
