@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mysql:
+    build:
+        context: ./mysql5.7
+    container_name:
+        mysql_com
+    restart:
+        always
+    ports:
+    - "3307:3306"
+    volumes:
+    - /data/docker/mysql/mysql-data:/var/lib/mysql
+    - /data/docker/mysql/conf:/etc/my.cnf.d
