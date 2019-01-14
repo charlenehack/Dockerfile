@@ -11,7 +11,7 @@ ADD ImageMagick.tar.gz https://pecl.php.net/get/${MCRYPT_VERSION}.tgz /tmp/
 RUN addgroup -S www && adduser -D -S -H -s /sbin/nologin -G www www && \
 	apk add --no-cache build-base autoconf libpng-dev libxml2-dev libxslt-dev gettext-dev libmcrypt-dev librdkafka-dev && \
 	cd /tmp && tar xvf ${MCRYPT_VERSION}.tgz &&  \
-	docker-php-ext-install gd xmlrpc bcmath gettext mysqli pdo_mysql rcntl shmop soap sockets sysvsem xsl opcache zip /tmp/${MCRYPT_VERSION} && \
+	docker-php-ext-install gd xmlrpc bcmath gettext mysqli pdo_mysql pcntl shmop soap sockets sysvsem xsl opcache zip /tmp/${MCRYPT_VERSION} && \
 	cd /tmp/ImageMagick* && ./configure && make && make install && pecl install redis mongodb imagick swoole rdkafka && \
 	apk del build-base && rm -rf /tmp/* && \
 	sed -i '/;extension=snmp/a\extension=redis.so\nextension=mongodb.so\nextension=imagick.so\nextension=swoole.so\nextension=rdkafka.so' ${PHP_CONFIG}/php/php.ini
